@@ -12,6 +12,7 @@ class GamesController < ApplicationController
 
   def score
     @param = params[:guess]
+    @score = 0
     @answer = ''
     url = "https://wagon-dictionary.herokuapp.com/#{@param}"
     dictionnary = open(url).read
@@ -28,6 +29,7 @@ class GamesController < ApplicationController
           @answer = 'Good guess'
         end
       end
+       @score += attempt.length
     end
   end
 end
